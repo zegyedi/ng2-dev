@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 
 export class EventListComponent
 {
+   
     events = [
         {
             id: 1,
@@ -312,5 +313,5 @@ export class EventListComponent
                     voters: ['bradgreen', 'igorminar', 'johnpapa']
                 }
             ]
-        }
+        }]
 }
