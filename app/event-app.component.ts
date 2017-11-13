@@ -1,8 +1,10 @@
-
 import { Component, Injectable } from '@angular/core';
 
+
 @Component({
-  template:'<events-list></events-list>',
+  template:`
+  <nav-bar></nav-bar>
+  <router-outlet></router-outlet>`,
   selector:'events-app'
 })
 
