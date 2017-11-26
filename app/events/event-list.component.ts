@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class EventListComponent implements OnInit
 {
-    events:any[]
+    events:any
     constructor(private eventService:EventService,private toasterService:ToastrService)
     {
       
@@ -29,7 +29,7 @@ export class EventListComponent implements OnInit
     }
    
     ngOnInit() {
-       this.events = this.eventService.getEvents()
+       this.eventService.getEvents().subscribe(events => {this.events = events})
         
     }
 }

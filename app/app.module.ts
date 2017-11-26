@@ -9,6 +9,9 @@ import { NgModule, Provider } from '@angular/core';
 import { NavBarComponent } from './nav/navbar.component';
 import { EventDetailsComponet } from './events/event.details/event-details.component';
 import {appRouting} from './routes'
+import { EventRouteActivator } from './events/shared/event-route-activator.service';
+import { Error404Component } from './common/error/error.component';
+
 
 @NgModule({
     imports: 
@@ -20,11 +23,25 @@ import {appRouting} from './routes'
      EventListComponent,
      EventThumbnailComponent,
      EventDetailsComponet,
-    CreateEventComponent],
+     CreateEventComponent,
+    Error404Component],
  bootstrap:[EventAppComponent],
- providers:[EventService,ToastrService]
+ providers:[EventService,
+    ToastrService,
+    EventRouteActivator,
+    {
+        provide:'canDeatctivateCreateEvent',
+        useValue:checkDirtySate
+    }
+]
 
 })
 export class AppModule{
-
 }
+ function  checkDirtySate(component: CreateEventComponent)
+    {
+         return  component.isDirty?
+         window.confirm('You are sure?') :
+         false
+
+    }
